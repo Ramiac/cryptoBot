@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  height: 50px;
+  background-color: #212529;
+}
+
+.divLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  height: 50px;
+  width: 280px;
+}
+
+.mainContent {
+  width: calc(100% - 280px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.titulo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+
