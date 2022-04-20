@@ -1,4 +1,20 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
+
+  <mat-sidenav-container>
+      <mat-sidenav mode="over" opened>
+        <button mat-button class="menu-button">
+          <i class="bi bi-house pe-2"></i>
+          <span>Home</span>
+        </button>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <app-main-content></app-main-content>
+      </mat-sidenav-content>
+
+
+  </mat-sidenav-container>
+
+
+<!-- <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
 
@@ -32,4 +48,4 @@
       </a>
     </li>
   </ul>
-</div>
+</div> -->

@@ -1,5 +1,9 @@
 :host {
   height: calc(100vh - 50px);
+  width: 100%;
+}
+
+mat-sidenav{
   width: 280px;
   border-top: 1px solid grey;
 }

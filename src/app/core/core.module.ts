@@ -1,10 +1,15 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+import { MatSidenavModule } from '@angular/material/sidenav'
+
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { BodyComponent } from './components/body/body.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
-import { RouterModule } from '@angular/router';
+
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -12,16 +17,17 @@ import { RouterModule } from '@angular/router';
   declarations: [
     FooterComponent,
     HeaderComponent,
-    MainMenuComponent,
+    BodyComponent,
     MainContentComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatSidenavModule,
   ],
   exports: [
     HeaderComponent,
-    MainMenuComponent,
+    BodyComponent,
     MainContentComponent
   ]
 })
