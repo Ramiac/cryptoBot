@@ -1,17 +1,28 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Title</mat-card-title>
-        <mat-card-subtitle>Subtitle</mat-card-subtitle>
-    </mat-card-header>
-    Header
-    <mat-card-content>
-        Text content
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="primary">Action1</button>
+<div class="row">
+    <div id="carouselExampleSlidesOnly" class="carousel slide col-sm-10 offset-sm-1" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./assets/img/home/crypto.jpg" class="d-block w-100" alt="slide 1" >
+            </div>
+            <div class="carousel-item">
+                <img src="./assets/img/home/HD-wallpaper-chart-cryptocurrency-black-violet-blue-candlestick-bitcoin.jpg" class="d-block w-100" alt="slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="./assets/img/home/wsi-imageoptim-TA-Chart1-1-1.jpg" class="d-block w-100" alt="slide 3">
+            </div>
+        </div>
+    </div>
+</div>
 
-    </mat-card-actions>
-    <mat-card-footer>
-        Footer
-    </mat-card-footer>
-</mat-card>
+<div class="row mt-4" *ngIf="currencyCards">
+  <div class="col-sm-10 offset-sm-1">
+    <div class="d-flex justify-content-around gap-4 flex-wrap" >
+      <app-card-currency
+      *ngFor="let card of currencyCards"
+        [abreviatura]="card.currencyAbrev"
+        [nome]="card.currencyNome"
+        [valor]="card.currencyValor">
+      </app-card-currency>
+    </div>
+  </div>
+</div>

@@ -6,11 +6,13 @@ import { CoreModule } from 'src/app/core/core.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './sub-modules/pages/home/home.component';
 import { MatButtonModule } from '@angular/material/button';
+import { CardCurrencyComponent } from './components/card-currency/card-currency.component';
 
 @NgModule({
   declarations: [
     HomeViewComponent,
-    HomeComponent
+    HomeComponent,
+    CardCurrencyComponent
   ],
   imports: [
     CommonModule,
