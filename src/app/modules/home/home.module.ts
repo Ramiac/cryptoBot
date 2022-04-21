@@ -5,7 +5,6 @@ import { HomeViewComponent } from './pages/home-view/home-view.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './sub-modules/pages/home/home.component';
-import { MatButtonModule } from '@angular/material/button';
 import { CardCurrencyComponent } from './components/card-currency/card-currency.component';
 
 @NgModule({
@@ -18,8 +17,7 @@ import { CardCurrencyComponent } from './components/card-currency/card-currency.
     CommonModule,
     HomeRoutingModule,
     CoreModule,
-    MatCardModule,
-    MatButtonModule,
+    MatCardModule
   ]
 })
 export class HomeModule { }

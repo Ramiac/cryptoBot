@@ -8,8 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
-
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -24,6 +23,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
     CommonModule,
     RouterModule,
     MatSidenavModule,
+    MatButtonModule,
   ],
   exports: [
     HeaderComponent,
