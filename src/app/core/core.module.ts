@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MenuContentComponent } from './components/menu-content/menu-content.component';
 
 
 
@@ -18,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     HeaderComponent,
     BodyComponent,
     MainContentComponent,
+    MenuContentComponent,
   ],
   imports: [
     CommonModule,

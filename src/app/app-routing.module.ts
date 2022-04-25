@@ -13,19 +13,25 @@ const routes: Routes = [
     component: HomeViewComponent,
     children:[
       {
-        outlet: 'mainContent',
         path: '',
         pathMatch: 'full',
-        loadChildren: () => import('./modules/home/home.module')
+        loadChildren: () => import('./modules/home/sub-modules/pages/home/home.module')
           .then((m) => m.HomeModule),
-      }
+      },
+      {
+        path: 'config',
+        pathMatch: 'full',
+        loadChildren: () => import('./modules/home/sub-modules/pages/configuracoes/configuracoes.module')
+          .then((m) => m.ConfiguracoesModule),
+      },
     ]
   },
-
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    relativeLinkResolution: 'legacy',
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

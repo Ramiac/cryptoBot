@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './sub-modules/pages/home/home.component';
+import { HomeComponent } from './home.component';
 
 const routes: Routes = [
   {
     path: '',
+    outlet: 'mainContent',
     component: HomeComponent,
-  }
+  },
 ];
 
 @NgModule({
