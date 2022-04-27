@@ -1,1 +1,17 @@
-<p>configuracoes works!</p>
+<div class="d-flex">
+  <form class="col-sm-6 text-center">
+    <mat-form-field appearance="legacy">
+      <mat-label>Seleciona uma cripto</mat-label>
+      <mat-select [formControl]="criptoSelect">
+        <mat-option *ngFor="let cripto of criptos" [value]="cripto.value">
+          {{ cripto.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="adicionarCripto()" class="ms-4">Adicionar Cipto na sua Home</button>
+  </form>
+
+  <app-configuracao-grid class="col-sm-6"></app-configuracao-grid>
+
+
+</div>

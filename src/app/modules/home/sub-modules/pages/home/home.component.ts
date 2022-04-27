@@ -1,7 +1,6 @@
-import { CurrencyCardModel } from './../../../models/currencyCard';
+import { CurrencyCardModel } from '../../../models/currency';
 import { Component, OnInit } from '@angular/core';
 import { TitlePageService } from 'src/app/core/services/title-page.service';
-import { BuiltinFunctionCall } from '@angular/compiler/src/compiler_util/expression_converter';
 
 @Component({
   selector: 'app-home',
