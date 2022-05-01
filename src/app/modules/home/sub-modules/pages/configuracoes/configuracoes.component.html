@@ -1,17 +1,45 @@
 <div class="d-flex">
-  <form class="col-sm-6 text-center">
-    <mat-form-field appearance="legacy">
+  <form class="col-sm-6 text-center row" [formGroup]="formGroup" (ngSubmit)="adicionarCripto()" novalidate>
+    <div class="d-flex flex-column col-sm-6 offset-sm-3 gap-3">
+
+      <mat-form-field appearance="legacy">
       <mat-label>Seleciona uma cripto</mat-label>
-      <mat-select [formControl]="criptoSelect">
+      <mat-select formControlName="criptoSelect" required>
         <mat-option *ngFor="let cripto of criptos" [value]="cripto.value">
           {{ cripto.viewValue }}
         </mat-option>
       </mat-select>
+      <mat-error> Seleciona uma opção</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="adicionarCripto()" class="ms-4">Adicionar Cipto na sua Home</button>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Seleciona uma valor de referência</mat-label>
+      <mat-select formControlName="compareCurrencySelect" required>
+        <mat-option *ngFor="let currency of compareCurrencies" [value]="currency">
+          {{ currency }}
+        </mat-option>
+      </mat-select>
+      <mat-error> Seleciona uma opção</mat-error>
+    </mat-form-field>
+
+    <ng-container *ngIf="validationFeedBack.class">
+      <div  [class]= 'validationFeedBack.class' >
+        {{ validationFeedBack.text }}
+      </div>
+      
+    </ng-container>
+
+
+    <button mat-raised-button color="primary">Adicionar Cripto na sua Home</button>
+
+    </div>
   </form>
 
-  <app-configuracao-grid class="col-sm-6"></app-configuracao-grid>
+  <app-configuracao-grid
+   class="col-sm-6"
+   [update$]="updateGrid$"
+   (criptoDelete)="deletarCripto($event)"
+   ></app-configuracao-grid>
 
 
 </div>

@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { MatSidenavModule } from '@angular/material/sidenav'
@@ -23,6 +24,7 @@ import { MenuContentComponent } from './components/menu-content/menu-content.com
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule,
     MatSidenavModule,
     MatButtonModule,

@@ -10,8 +10,13 @@ export interface CurrencyDropdownModel {
 }
 
 export interface CurrencyTableModel {
-    id: number;
-    cripto: string,
-    valor: string;
-    moedaDeReferencia: string;
-  }
+  cripto: string,
+  symbol: string;
+  moedaDeReferencia: string;
+}
+
+export interface CriptoAddModel {
+  name: string;
+  symbol: string;
+  compareCurrency: string;
+}

@@ -11,7 +11,12 @@
         },
         "@schematics/angular:application": {
           "strict": true
+        },
+        "@schematics/angular:service": {
+          "path": "src/app/core/services"
         }
+
+        
       },
       "root": "",
       "sourceRoot": "src",
