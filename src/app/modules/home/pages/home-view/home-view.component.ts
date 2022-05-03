@@ -1,6 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuModel } from 'src/app/core/models/menuModel';
 import { TitlePageService } from 'src/app/core/services/title-page.service';
 
+
+const MENU_BUTTONS: MenuModel[] = [
+  {
+    title: "Home",
+    path: "",
+    bootstrapIconsClass: "bi bi-house",
+  },
+  {
+    title: "Configurações",
+    path: "/home/config",
+    bootstrapIconsClass: "bi bi-house",
+  },
+  {
+    title: "Sobre nós",
+    path: "",
+    bootstrapIconsClass: "bi bi-file-earmark-person",
+  },
+]
 
 @Component({
   selector: 'app-home-view',
@@ -9,6 +28,7 @@ import { TitlePageService } from 'src/app/core/services/title-page.service';
 })
 export class HomeViewComponent implements OnInit {
   titulo: string = '';
+  menuButtons = new Array<MenuModel>();
 
   constructor(
     private titlePage: TitlePageService,
@@ -17,6 +37,7 @@ export class HomeViewComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.menuButtons = MENU_BUTTONS;
   }
 
 }

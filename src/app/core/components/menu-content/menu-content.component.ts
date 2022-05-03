@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MenuModel } from '../../models/menuModel';
 
 @Component({
   selector: 'app-menu-content',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-content.component.scss']
 })
 export class MenuContentComponent implements OnInit {
+  @Input() menuButtons = new Array<MenuModel>();
 
   constructor() { }
 
@@ -13,3 +15,4 @@ export class MenuContentComponent implements OnInit {
   }
 
 }
+

@@ -1,50 +1,6 @@
-<button mat-button routerLink="">
-  <i class="bi bi-house pe-2"></i>
-  <span>Home</span>
-</button>
-<button mat-button routerLink="/home/config">
-  <i class="bi bi-gear pe-2"></i>
-  <span>Configurações</span>
-</button>
-<button mat-button>
-  <i class="bi bi-file-earmark-person pe-2"></i>
-  <span>Sobre nós</span>
-</button>
-
-
-
-<!-- <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
-  <ul class="nav nav-pills flex-column mb-auto">
-    <li class="nav-item">
-
-      <a class="nav-link active" aria-current="page" routerLink="home">
-        <i class="bi bi-house pe-2"></i>
-        Home
-      </a>
-    </li>
-    <li>
-      <a class="nav-link text-white">
-        <i class="bi bi-speedometer2 pe-2"></i>
-        Dashboard
-      </a>
-    </li>
-    <li>
-      <a class="nav-link text-white">
-        <i class="bi bi-table  pe-2"></i>
-        Orders
-      </a>
-    </li>
-    <li>
-      <a class="nav-link text-white">
-        <i class="bi bi-grid pe-2"></i>
-        Products
-      </a>
-    </li>
-    <li>
-      <a class="nav-link text-white">
-        <i class="bi bi-person-circle pe-2"></i>
-        Customers
-      </a>
-    </li>
-  </ul>
-</div> -->
+<ng-container *ngFor="let button of menuButtons">
+  <button mat-button [routerLink]="button.path">
+    <i class="{{button.bootstrapIconsClass}} pe-2"></i>
+    <span>{{ button.title }}</span>
+  </button>
+</ng-container>

@@ -1,4 +1,3 @@
-import { CurrencyCardModel } from '../../../models/currency';
 import { Component, OnInit } from '@angular/core';
 import { TitlePageService } from 'src/app/core/services/title-page.service';
 import { CriptoCardModel, CriptoModel, CriptoModelFromBack } from '../../../models/criptoModel';
