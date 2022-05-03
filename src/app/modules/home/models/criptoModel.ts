@@ -13,4 +13,11 @@ export interface CriptoModelFromBack{
 export interface CriptoDropdownModel {
     value: string;
     viewValue: string;
+}
+
+export interface CriptoCardModel {
+    cripto: string;
+    symbol: string;
+    moedaDeReferencia: string;
+    preco: number;
   }

@@ -30,4 +30,8 @@ export class CriptoService {
   deletarCriptoLista(cripto: CriptoModelFromBack){
     return this.http.post<any>(`${this.criptoAPI_URL}criptoDelete`, cripto, this.httpOptions);
   }
+
+  fetchCriptosPreco(symbol: string, convert: string){
+    return this.http.get<any>(`${this.criptoAPI_URL}criptoFetch?symbol=${symbol}&convert=${convert}`)
+  }
 }

@@ -1,6 +1,8 @@
 import { CurrencyCardModel } from '../../../models/currency';
 import { Component, OnInit } from '@angular/core';
 import { TitlePageService } from 'src/app/core/services/title-page.service';
+import { CriptoCardModel, CriptoModel, CriptoModelFromBack } from '../../../models/criptoModel';
+import { CriptoService } from 'src/app/core/services/cripto.service';
 
 @Component({
   selector: 'app-home',
@@ -9,49 +11,43 @@ import { TitlePageService } from 'src/app/core/services/title-page.service';
 })
 
 export class HomeComponent implements OnInit {
-  currencyCards = new Array<CurrencyCardModel>();
+  killLoading:boolean = true;
+  showError!:boolean;
+  criptoCards = new Array<CriptoCardModel>();
 
   constructor(
-    private titlePage: TitlePageService
+    private titlePage: TitlePageService,
+    private criptoService: CriptoService
   ) {
     this.titlePage.setTitlePage("Home");
    }
 
   ngOnInit(): void {
     this.carregarCurrencyCards();
+    setTimeout(() => {
+      this.showError = this.criptoCards.length == 0 ? true:false
+      this.killLoading = false;
+    }, 1500);
   }
 
   carregarCurrencyCards (){
-    this.currencyCards = [
-      {
-        currencyAbrev: "BTC",
-        currencyNome: "Bitcoin",
-        currencyValor: "USD 46.000"
-
-      },
-      {
-        currencyAbrev: "ETH",
-        currencyNome: "Ethereum",
-        currencyValor: "USD 3.120"
-
-      },
-      {
-        currencyAbrev: "LUNA",
-        currencyNome: "TerraLuna",
-        currencyValor: "USD 100"
-
-      },
-      {
-        currencyAbrev: "ADA",
-        currencyNome: "ada",
-        currencyValor: "USD 130.00"
-      },
-      {
-        currencyAbrev: "ATOM",
-        currencyNome: "Cosmos",
-        currencyValor: "USD 27.00"
-      },
-    ]
+    this.criptoService.listarCriptos()
+      .subscribe(response => {
+        response.criptos.forEach((cripto: CriptoModelFromBack) => {
+          this.criptoService.fetchCriptosPreco(cripto.symbol, cripto.compareCurrency)
+          .subscribe( response => {
+            this.criptoCards.push({
+              cripto: cripto.name,
+              symbol: cripto.symbol,
+              moedaDeReferencia: cripto.compareCurrency,
+              preco: response.quote.price,
+            })
+          })
+        });
+        this.killLoading = false;
+      }, 
+      err => {
+        console.log(err.error.message);
+      })
   }
-
 }

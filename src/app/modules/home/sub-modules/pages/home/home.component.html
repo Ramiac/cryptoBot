@@ -14,15 +14,30 @@
     </div>
 </div>
 
-<div class="row mt-4" *ngIf="currencyCards">
+<div class="d-flex justify-content-center m-5" *ngIf="killLoading">
+  <mat-spinner diameter="70"></mat-spinner>
+</div>
+
+
+<div class="row mt-4" *ngIf="criptoCards.length > 0">
   <div class="col-sm-10 offset-sm-1">
     <div class="d-flex justify-content-around gap-4 flex-wrap" >
       <app-card-currency
-      *ngFor="let card of currencyCards"
-        [abreviatura]="card.currencyAbrev"
-        [nome]="card.currencyNome"
-        [valor]="card.currencyValor">
+      *ngFor="let card of criptoCards"
+        [abreviatura]="card.symbol"
+        [nome]="card.cripto"
+        [moedaDeReferencia]="card.moedaDeReferencia"
+        [valor]="card.preco">
       </app-card-currency>
     </div>
   </div>
 </div>
+
+<div class="text-center m-5" *ngIf="showError">
+  <p class="text-info fs-3 lh-base">
+    Nenhum cripto ainda <br>
+    Pode listar criptos na página de configuração
+  </p>
+  
+</div>
+
