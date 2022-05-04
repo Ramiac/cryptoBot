@@ -31,17 +31,7 @@ export class HomeComponent implements OnInit {
     this.criptoService.listarCriptos()
       .subscribe(response => {
         response.criptos.forEach((cripto: CriptoModelFromBack) => {
-          this.fetchCripto(cripto)
-        });
-        this.killLoading = false;
-      },
-      err => {
-        console.log(err.error.message);
-      })
-  }
-
-  fetchCripto(cripto: CriptoModelFromBack){
-    this.criptoService.fetchCriptosPreco(cripto.symbol, cripto.compareCurrency)
+          this.criptoService.fetchCriptosPreco(cripto.symbol, cripto.compareCurrency)
           .subscribe( response => {
             this.criptoCards.push({
               cripto: cripto.name,
@@ -50,6 +40,12 @@ export class HomeComponent implements OnInit {
               preco: response.quote.price,
             })
           })
+        });
+        this.killLoading = false;
+      },
+      err => {
+        console.log(err.error.message);
+      })
   }
 
   killLoadingFunc (){

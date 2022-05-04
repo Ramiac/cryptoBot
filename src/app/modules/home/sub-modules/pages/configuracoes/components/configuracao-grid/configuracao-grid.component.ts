@@ -45,9 +45,7 @@ export class ConfiguracaoGridComponent implements OnInit {
         this.criptoDatasource = new MatTableDataSource(criptoList);
       },(err) => {
           console.log(err.error.message)
-      }
-        
-        );
+      });
 
   }
 
