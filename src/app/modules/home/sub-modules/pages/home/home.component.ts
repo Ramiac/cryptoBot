@@ -23,17 +23,25 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregarCurrencyCards();
-    setTimeout(() => {
-      this.showError = this.criptoCards.length == 0 ? true:false
-      this.killLoading = false;
-    }, 1500);
+
+    this.killLoadingFunc();
   }
 
   carregarCurrencyCards (){
     this.criptoService.listarCriptos()
       .subscribe(response => {
         response.criptos.forEach((cripto: CriptoModelFromBack) => {
-          this.criptoService.fetchCriptosPreco(cripto.symbol, cripto.compareCurrency)
+          this.fetchCripto(cripto)
+        });
+        this.killLoading = false;
+      },
+      err => {
+        console.log(err.error.message);
+      })
+  }
+
+  fetchCripto(cripto: CriptoModelFromBack){
+    this.criptoService.fetchCriptosPreco(cripto.symbol, cripto.compareCurrency)
           .subscribe( response => {
             this.criptoCards.push({
               cripto: cripto.name,
@@ -42,11 +50,12 @@ export class HomeComponent implements OnInit {
               preco: response.quote.price,
             })
           })
-        });
-        this.killLoading = false;
-      }, 
-      err => {
-        console.log(err.error.message);
-      })
+  }
+
+  killLoadingFunc (){
+    setTimeout(() => {
+      this.showError = this.criptoCards.length == 0 ? true:false
+      this.killLoading = false;
+    }, 1500);
   }
 }

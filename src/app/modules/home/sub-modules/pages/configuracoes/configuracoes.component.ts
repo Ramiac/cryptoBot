@@ -18,7 +18,7 @@ export class ConfiguracoesComponent implements OnInit, OnDestroy {
   criptos = new Array<CriptoDropdownModel>();
   compareCurrencies = new Array<string>();
   formGroup!: FormGroup;
-  
+
   validationFeedBack = {
     text: "",
     class: "",
@@ -27,7 +27,7 @@ export class ConfiguracoesComponent implements OnInit, OnDestroy {
   constructor(
     private titlePage: TitlePageService,
     private criptoService: CriptoService,
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
   ) {
     this.titlePage.setTitlePage("Configurações");
    }
@@ -36,6 +36,10 @@ export class ConfiguracoesComponent implements OnInit, OnDestroy {
     this.carregarCriptosDropdown();
     this.carregarComparCurrencyDropdown();
 
+    this.montarForm();
+  }
+
+  montarForm(){
     this.formGroup = this.formBuilder.group({
       criptoSelect: ['', [Validators.required]] ,
       compareCurrencySelect: ['', [Validators.required]],
@@ -80,7 +84,7 @@ export class ConfiguracoesComponent implements OnInit, OnDestroy {
         symbol: this.formGroup.get("criptoSelect")?.value,
         compareCurrency: this.formGroup.get("compareCurrencySelect")?.value,
       }
-  
+
       this.criptoService
         .adicionarCriptoLista(cripto)
         .subscribe(response => {
@@ -95,7 +99,7 @@ export class ConfiguracoesComponent implements OnInit, OnDestroy {
             this.validationFeedBack.class = "text-success";
 
             this.updateGrid$.next();
-        }, 
+        },
         err => {
           this.validationFeedBack.text = err.error.message;
           this.validationFeedBack.class = "text-danger";
@@ -110,8 +114,7 @@ export class ConfiguracoesComponent implements OnInit, OnDestroy {
       name: element.cripto,
       symbol: element.symbol,
       compareCurrency: element.moedaDeReferencia,
-
-    } 
+    }
     this.criptoService
       .deletarCriptoLista(cripto)
       .subscribe(response => {
